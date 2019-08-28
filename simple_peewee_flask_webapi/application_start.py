@@ -5,8 +5,13 @@ from flask.globals import request
 from simple_peewee_flask_webapi.app_models import database_proxy
 from simple_peewee_flask_webapi.app_models import SimpleTable, JoinTable
 from flask.wrappers import Response
+from simple_peewee_flask_webapi.simple_table import simple_table_api
+from simple_peewee_flask_webapi.join_table import join_table_api
+from peewee import DoesNotExist
 
 app = Flask(__name__)
+app.register_blueprint(simple_table_api)
+app.register_blueprint(join_table_api)
 
 
 @app.before_request
@@ -38,13 +43,23 @@ def get_models():
     if id_join_table is None or id_join_table == "":
         abort(400, 'id_join_table not informed')
 
-    simple_table = SimpleTable.get(id_simple_table)
+    simple_table = None
+    try:
+        simple_table = SimpleTable.get(int(id_simple_table))
+    except DoesNotExist:
+        abort(404, 'simple_table not found')
+
     join_dict = {}
     joins = simple_table.joins.execute()
     for i in range(len(joins)):
         join_dict['join_' + str(joins[i].id)] = joins[i].__data__
 
-    join_table = JoinTable.get(id_join_table)
+    join_table = None
+    try:
+        join_table = JoinTable.get(int(id_join_table))
+    except DoesNotExist:
+        abort(404, 'join_table not found')
+
     simple_dict = {'simple_obj': join_table.simple.__data__}
 
     simple_table_merge = {**simple_table.__data__, **join_dict}
