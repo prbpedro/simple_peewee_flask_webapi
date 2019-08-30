@@ -10,7 +10,7 @@ simple_table_api = Blueprint('simple_table_api', __name__)
 
 
 @simple_table_api.route('/simple-table/', methods=['GET', 'POST'])
-def get_models():
+def get_simple_table():
     id_simple_table = None
 
     if request.method == 'GET':

@@ -34,7 +34,7 @@ class JoinTable(BaseModel):
 
 
 database_proxy.initialize(SqliteDatabase(
-    '../database/simple_flask_peewee_db.db'))
+    'simple_flask_peewee_db.db'))
 
 id_simple_table = None
 try:
@@ -58,4 +58,4 @@ except IntegrityError:
     id_join_table = JoinTable.select().where(
         JoinTable.code == 'CODE').execute()[0].id
 
-print(id_simple_table, id_join_table)
+database_proxy.close()

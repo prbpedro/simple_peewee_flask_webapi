@@ -1,0 +1,4 @@
+from simple_peewee_flask_webapi import app_models
+from simple_peewee_flask_webapi import simple_table
+from simple_peewee_flask_webapi import join_table
+from simple_peewee_flask_webapi import application_start

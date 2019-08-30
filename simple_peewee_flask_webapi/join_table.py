@@ -10,7 +10,7 @@ join_table_api = Blueprint('join_table_api', __name__)
 
 
 @join_table_api.route('/join_table/', methods=['GET', 'POST'])
-def get_models():
+def get_join_table():
     id_join_table = None
 
     if request.method == 'GET':
