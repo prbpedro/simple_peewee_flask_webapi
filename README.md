@@ -1,6 +1,7 @@
 # simple_peewee_flask_webapi
 [![Build Status](https://travis-ci.org/prbpedro/simple_peewee_flask_webapi.svg?branch=master)](https://travis-ci.org/prbpedro/simple_peewee_flask_webapi)
 [![Coverage Status](https://coveralls.io/repos/github/prbpedro/simple_peewee_flask_webapi/badge.svg?branch=master)](https://coveralls.io/github/prbpedro/simple_peewee_flask_webapi?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a Python 3 project made with the PyDev IDE that demonstrates the use of peewee ORM and Flask to build a WEB-API.
 
